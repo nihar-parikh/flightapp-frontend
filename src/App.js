@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import FlightList from "./pages/FlightList";
+import Login from "./pages/Login";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import AddFlight from "./pages/AddFlight";
+import { useSelector } from "react-redux";
 
 function App() {
+  const user = useSelector((state) => state.user.currentUser);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={user ? <Navigate replace to="/flights" /> : <Login />}
+          />
+
+          <Route path="/flights" element={<FlightList />} />
+          <Route path="/flights/new" element={<AddFlight />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
