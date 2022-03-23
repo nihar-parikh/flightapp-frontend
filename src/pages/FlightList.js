@@ -10,7 +10,7 @@ const FlightList = () => {
   const [to, setTo] = useState("");
   const [departureDate, setDepartureDate] = useState("");
   const [price, setPrice] = useState(0);
-  // const role = localStorage.getItem("role");
+  const role = localStorage.getItem("role");
 
   const flights = useSelector((state) => state.flight.flights);
   const dispatch = useDispatch();

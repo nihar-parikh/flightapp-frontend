@@ -21,7 +21,7 @@ export const login = async (dispatch, userInfo) => {
     ); //don't use {userInfo:userInfo} bcoz already userInfo is an object
     console.log("response: ", res.data);
     // console.log(res.data);
-    // localStorage.setItem("role", res.data.user.role);
+    localStorage.setItem("role", res.data.user.role);
     dispatch(loginSuccess(res.data.user));
   } catch (error) {
     dispatch(loginFailure());
