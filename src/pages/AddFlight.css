@@ -1,14 +1,24 @@
-div {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.flightContainer {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-form {
-    border: 1px solid teal;
-    height: 500px;
-    width: 500px;
-    width: 500px;
-    padding-left: 10px;
+.flightInfo {
+  border: 1px solid teal;
+  height: 500px;
+  width: 500px;
+  width: 500px;
+  /* padding-left: 10px; */
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  flex-direction: column;
+  
+}
+
+.input {
+  margin: 10px;
+  width: 70%;
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addFlight } from "../redux/apiCalls";
-// import "./AddFlight.css";
+import "./AddFlight.css";
 
 const AddFlight = () => {
   const navigate = useNavigate();
@@ -71,14 +71,15 @@ const AddFlight = () => {
   return (
     <>
       {/* AddFlight */}
-      <div>
+      <div className="flightContainer">
         <form
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-          }}
+          className="flightInfo"
+          // style={{
+          //   display: "flex",
+          //   alignItems: "center",
+          //   justifyContent: "center",
+          //   flexDirection: "column",
+          // }}
         >
           <label htmlFor="flights">Create a Flight:</label>
           {newFlight && <h1>New Flight has been added.</h1>}
@@ -86,7 +87,8 @@ const AddFlight = () => {
           <select
             id="flights"
             name="flights"
-            style={{ margin: "10px" }}
+            className="input"
+            // style={{ margin: "10px", width:"70%" }}
             onChange={handleFrom}
           >
             <option defaultValue>from</option>
@@ -97,7 +99,12 @@ const AddFlight = () => {
             <option value="goa">goa</option>
             <option value="hyderabad">hyderabad</option>
           </select>
-          <select id="flights" name="flights" onChange={handleTo}>
+          <select
+            id="flights"
+            name="flights"
+            className="input"
+            onChange={handleTo}
+          >
             <option defaultValue>to</option>
             <option value="vadodara">vadodara</option>
             <option value="ahmedabad">ahmedabad</option>
@@ -113,6 +120,7 @@ const AddFlight = () => {
             type="date"
             id="departureDate"
             name="departureDate"
+            className="input"
             style={{ margin: "10px" }}
             onChange={handleDepartureDate}
           />
@@ -122,6 +130,7 @@ const AddFlight = () => {
             id="appt"
             name="appt"
             step="2"
+            className="input"
             onChange={handleDepartureTime}
           />
           <label htmlFor="landingDate" style={{ marginLeft: "10px" }}>
@@ -131,6 +140,7 @@ const AddFlight = () => {
             type="date"
             id="landingDate"
             name="landingDate"
+            className="input"
             style={{ margin: "10px" }}
             onChange={handleLandingDate}
           />
@@ -140,20 +150,22 @@ const AddFlight = () => {
             id="appt"
             name="appt"
             step="2"
+            className="input"
             onChange={handleLandingTime}
           />
-          <label htmlFor="price" style={{ marginLeft: "10px" }}>
+          <label htmlFor="price">
             Price:
           </label>
           <input
             type="text"
             id="price"
             name="price"
+            className="input"
             style={{ marginLeft: "10px" }}
             onChange={handlePrice}
           />
 
-          <button style={{ margin: "10px" }} onClick={handleAdd}>
+          <button style={{ margin: "10px", width: "20%" }} onClick={handleAdd}>
             Add a Flight
           </button>
         </form>

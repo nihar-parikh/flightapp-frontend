@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getAllFlights, getSearchFlights } from "../redux/apiCalls";
+import {
+  getAllFlights,
+  getAllPlaces,
+  getSearchFlights,
+} from "../redux/apiCalls";
 import "./FlightList.css";
 
 const FlightList = () => {
@@ -13,10 +17,12 @@ const FlightList = () => {
   const role = localStorage.getItem("role");
 
   const flights = useSelector((state) => state.flight.flights);
+  const places = useSelector((state) => state.flight.places);
   const dispatch = useDispatch();
 
   useEffect(() => {
     getAllFlights(dispatch);
+    getAllPlaces(dispatch);
   }, [dispatch]);
 
   const handleFrom = (e) => {
@@ -63,21 +69,28 @@ const FlightList = () => {
             onChange={handleFrom}
           >
             <option defaultValue>from</option>
-            <option value="vadodara">vadodara</option>
+            {places.map((place) => (
+              <option value={place}>{place}</option>
+            ))}
+
+            {/* <option value="vadodara">vadodara</option>
             <option value="ahmedabad">ahmedabad</option>
             <option value="banglore">banglore</option>
             <option value="mumbai">mumbai</option>
             <option value="goa">goa</option>
-            <option value="hyderabad">hyderabad</option>
+            <option value="hyderabad">hyderabad</option> */}
           </select>
           <select id="flights" name="flights" onChange={handleTo}>
             <option defaultValue>to</option>
-            <option value="vadodara">vadodara</option>
+            {places.map((place) => (
+              <option value={place}>{place}</option>
+            ))}
+            {/* <option value="vadodara">vadodara</option>
             <option value="ahmedabad">ahmedabad</option>
             <option value="banglore">banglore</option>
             <option value="mumbai">mumbai</option>
             <option value="goa">goa</option>
-            <option value="hyderabad">hyderabad</option>
+            <option value="hyderabad">hyderabad</option> */}
           </select>
           <label htmlFor="birthday" style={{ marginLeft: "10px" }}>
             Date:

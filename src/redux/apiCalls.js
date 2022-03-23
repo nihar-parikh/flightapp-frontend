@@ -6,6 +6,9 @@ import {
   getFlightFailure,
   getFlightStart,
   getFlightSuccess,
+  getPlacesFailure,
+  getPlacesStart,
+  getPlacesSuccess,
 } from "./flightRedux";
 import { loginFailure, loginStart, loginSuccess } from "./userRedux";
 
@@ -42,6 +45,34 @@ export const getAllFlights = async (dispatch) => {
   } catch (error) {
     console.log("error:", error);
     dispatch(getFlightFailure());
+  }
+};
+
+//Get all places
+
+export const getAllPlaces = async (dispatch) => {
+  dispatch(getPlacesStart());
+
+  try {
+    const { data } = await axios.get("http://localhost:8000/api/v1/flights");
+    if (data) {
+      const getPlaces = (flights) => {
+        let placesArray = [];
+        for (let i = 0; i < flights.length; i++) {
+          placesArray.push(flights[i].from);
+          placesArray.push(flights[i].to)
+        }
+        return [...new Set(placesArray)];
+      };
+      console.log(getPlaces(data.flights));
+
+      dispatch(getPlacesSuccess(getPlaces(data.flights)));
+    } else {
+      dispatch(getPlacesFailure());
+    }
+  } catch (error) {
+    console.log("error:", error);
+    dispatch(getPlacesFailure());
   }
 };
 

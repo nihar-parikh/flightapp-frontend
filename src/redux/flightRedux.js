@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const flightSlice = createSlice({
   name: "flight",
   initialState: {
+    places: [],
     flights: [],
     isFetching: false,
     error: false,
@@ -18,6 +19,20 @@ const flightSlice = createSlice({
       state.flights = action.payload;
     },
     getFlightFailure: (state, action) => {
+      state.isFetching = false;
+      state.error = true;
+      //no action required...u can remove action
+    },
+    getPlacesStart: (state, action) => {
+      state.isFetching = true;
+      state.error = false;
+      //no action required...u can remove action
+    },
+    getPlacesSuccess: (state, action) => {
+      state.isFetching = false;
+      state.places = action.payload;
+    },
+    getPlacesFailure: (state, action) => {
       state.isFetching = false;
       state.error = true;
       //no action required...u can remove action
@@ -45,6 +60,9 @@ export const {
   getFlightStart,
   getFlightSuccess,
   getFlightFailure,
+  getPlacesStart,
+  getPlacesSuccess,
+  getPlacesFailure,
   addFlightStart,
   addFlightSuccess,
   addFlightFailure,
