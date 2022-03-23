@@ -50,7 +50,7 @@ const Button = styled.button`
 `;
 
 const Error = styled.div`
-  color: darkgreen;
+  color: light orange;
 `;
 
 const Links = styled.a`

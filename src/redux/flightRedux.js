@@ -30,6 +30,7 @@ const flightSlice = createSlice({
     },
     addFlightSuccess: (state, action) => {
       state.isFetching = false;
+      console.log(action.payload);
       state.flights.push(action.payload);
     },
     addFlightFailure: (state, action) => {

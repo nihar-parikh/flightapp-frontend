@@ -20,12 +20,10 @@ export const login = async (dispatch, userInfo) => {
       userInfo
     ); //don't use {userInfo:userInfo} bcoz already userInfo is an object
     console.log("response: ", res.data);
-    // console.log(res.data.token);
-    // localStorage.setItem("token", res.data.token);
-    dispatch(loginSuccess(res.data.user));
     // console.log(res.data);
+    // localStorage.setItem("role", res.data.user.role);
+    dispatch(loginSuccess(res.data.user));
   } catch (error) {
-    //console.log("error:", error);
     dispatch(loginFailure());
   }
 };
@@ -36,7 +34,6 @@ export const getAllFlights = async (dispatch) => {
 
   try {
     const res = await axios.get("http://localhost:8000/api/v1/flights");
-    // console.log("response: ", res.data.flights);
     if (res.data) {
       dispatch(getFlightSuccess(res.data.flights));
     } else {
@@ -78,19 +75,25 @@ export const getSearchFlights = async (
 //add a flight
 export const addFlight = async (flightInfo, dispatch) => {
   dispatch(addFlightStart());
-  console.log(flightInfo);
-  
+  flightInfo.departureDate =
+    flightInfo.departureDate + " " + flightInfo.departureTime;
+  flightInfo.landingDate =
+    flightInfo.landingDate + " " + flightInfo.landingTime;
+  const { departureTime, landingTime, ...newFlightInfo } = flightInfo;
 
-  // try {
-  //   const res = await axios.post("http://localhost:8000/api/v1/flights/new");
-  //   // console.log("response: ", res.data.flights);
-  //   if (res.data) {
-  //     dispatch(addFlightSuccess(res.data.flights));
-  //   } else {
-  //     dispatch(addFlightFailure());
-  //   }
-  // } catch (error) {
-  //   console.log("error:", error);
-  //   dispatch(addFlightFailure());
-  // }
+  try {
+    const res = await axios.post(
+      "http://localhost:8000/api/v1/flights/new",
+      newFlightInfo
+    );
+    console.log("response: ", res.data);
+    if (res.data) {
+      dispatch(addFlightSuccess(res.data.flight));
+    } else {
+      dispatch(addFlightFailure());
+    }
+  } catch (error) {
+    console.log("error:", error);
+    dispatch(addFlightFailure());
+  }
 };
