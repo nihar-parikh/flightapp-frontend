@@ -1,13 +1,13 @@
 import "./App.css";
-import FlightList from "./pages/FlightList";
-import Login from "./pages/Login";
+import FlightList from "../pages/flightList/FlightList";
+import Login from "../pages/login/Login";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
-import AddFlight from "./pages/AddFlight";
+import AddFlight from "../pages/addFlight/AddFlight";
 import { useSelector } from "react-redux";
 
 function App() {

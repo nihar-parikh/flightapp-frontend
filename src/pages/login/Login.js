@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-// import { login } from "../redux/apiCalls";
-import { useNavigate, Link } from "react-router-dom";
-import { login } from "../redux/apiCalls";
+import { Link } from "react-router-dom";
+import { login } from "../../redux/apiCalls";
 
 const Container = styled.div`
   width: 100vw;
@@ -68,14 +67,11 @@ const Links = styled.a`
 `;
 
 const Login = () => {
-  const navigate = useNavigate();
-  //u can use object instead of separate email and password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("Invalid Credentials!!!");
   const dispatch = useDispatch();
   const error = useSelector((state) => state.user.error);
-  // console.log(isFectching, error);
 
   const handleEmail = (e) => {
     e.preventDefault();
@@ -87,7 +83,7 @@ const Login = () => {
   };
 
   const handleLogin = (e) => {
-    e.preventDefault(); //bcoz when input field is filled the page refreshes so to avoid it
+    e.preventDefault();
     login(dispatch, { email, password });
   };
 

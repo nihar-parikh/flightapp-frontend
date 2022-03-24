@@ -1,0 +1,28 @@
+.flightContainer {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flightInfo {
+    border: 1px solid teal;
+    height: 500px;
+    width: 500px;
+    background-color: #1ea1a1;
+    /* padding-left: 10px; */
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: column;
+}
+
+.input {
+    margin: 10px;
+    width: 70%;
+}
+
+label {
+    text-align: left;
+    padding-left: 10px;
+}

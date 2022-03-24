@@ -3,42 +3,37 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    currentUser: null, //or {}
+    currentUser: null,
     isFetching: false,
     error: false,
   },
   reducers: {
-    signUpStart: (state, action) => {
+    signUpStart: (state) => {
       state.isFetching = true;
       state.error = false;
-      //no action required...u can remove action
     },
     signUpSuccess: (state, action) => {
       state.isFetching = false;
-      console.log(action.payload);
       state.currentUser = action.payload;
     },
-    signUpFailure: (state, action) => {
+    signUpFailure: (state) => {
       state.isFetching = false;
       state.error = true;
-      //no action required...u can remove action
     },
 
-    loginStart: (state, action) => {
+    loginStart: (state) => {
       state.isFetching = true;
       state.error = false;
-      //no action required...u can remove action
     },
     loginSuccess: (state, action) => {
       state.isFetching = false;
       state.currentUser = action.payload;
     },
-    loginFailure: (state, action) => {
+    loginFailure: (state) => {
       state.isFetching = false;
       state.error = true;
-      //no action required...u can remove action
     },
-    logout: (state, action) => {
+    logout: (state) => {
       state.currentUser = null;
       state.error = false;
     },
@@ -54,8 +49,6 @@ export const {
   loginFailure,
   logout,
 } = userSlice.actions;
-// const addProduct = cartSlice.actions; wrong method don't do it
-// export { addProduct };
 
-const userReducer = userSlice.reducer; //it should be export default
+const userReducer = userSlice.reducer;
 export default userReducer;
