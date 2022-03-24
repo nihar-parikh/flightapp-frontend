@@ -121,6 +121,7 @@ const AddFlight = () => {
             name="appt"
             className="input"
             step="2"
+            className="input"
             onChange={handleDepartureTime}
           />
           <label htmlFor="landingDate" style={{ marginLeft: "10px" }}>
@@ -141,16 +142,16 @@ const AddFlight = () => {
             name="appt"
             className="input"
             step="2"
+            className="input"
             onChange={handleLandingTime}
           />
-          <label htmlFor="price" style={{ marginLeft: "10px" }}>
-            Price:
-          </label>
+          <label htmlFor="price">Price:</label>
           <input
             type="text"
             id="price"
             className="input"
             name="price"
+            className="input"
             style={{ marginLeft: "10px" }}
             onChange={handlePrice}
           />
