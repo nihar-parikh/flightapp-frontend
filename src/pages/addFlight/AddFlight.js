@@ -24,7 +24,6 @@ const AddFlight = () => {
   const handleTo = (e) => {
     setTo(e.target.value);
   };
-  // console.log(from, to);
 
   const handleDepartureDate = (e) => {
     setDepartureDate(e.target.value);
@@ -41,7 +40,6 @@ const AddFlight = () => {
   const handlePrice = (e) => {
     setPrice(e.target.value);
   };
-  // console.log(price);
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -58,16 +56,18 @@ const AddFlight = () => {
       dispatch
     );
     setNewFlight(true);
+    setFrom("");
+    setTo("");
+    setDepartureDate("");
+    setDepartureTime("");
+    setLandingDate("");
+    setLandingTime("");
+    setPrice("");
+    setTimeout(() => {
+      setNewFlight(false);
+    }, 2000);
   };
-  console.log(
-    from,
-    to,
-    departureDate,
-    departureTime,
-    landingDate,
-    landingTime,
-    price
-  );
+
   return (
     <>
       <div className="flightContainer">
@@ -79,9 +79,11 @@ const AddFlight = () => {
             id="flights"
             name="flights"
             className="input"
+            value={from}
             onChange={handleFrom}
           >
             <option defaultValue>from</option>
+
             <option value="vadodara">vadodara</option>
             <option value="ahmedabad">ahmedabad</option>
             <option value="banglore">banglore</option>
@@ -93,6 +95,7 @@ const AddFlight = () => {
             id="flights"
             name="flights"
             className="input"
+            value={to}
             onChange={handleTo}
           >
             <option defaultValue>to</option>
@@ -111,6 +114,7 @@ const AddFlight = () => {
             id="departureDate"
             name="departureDate"
             className="input"
+            value={departureDate}
             style={{ margin: "10px" }}
             onChange={handleDepartureDate}
           />
@@ -119,9 +123,9 @@ const AddFlight = () => {
             type="time"
             id="appt"
             name="appt"
+            value={departureTime}
             className="input"
             step="2"
-            className="input"
             onChange={handleDepartureTime}
           />
           <label htmlFor="landingDate" style={{ marginLeft: "10px" }}>
@@ -132,6 +136,7 @@ const AddFlight = () => {
             id="landingDate"
             name="landingDate"
             className="input"
+            value={landingDate}
             style={{ margin: "10px" }}
             onChange={handleLandingDate}
           />
@@ -141,8 +146,8 @@ const AddFlight = () => {
             id="appt"
             name="appt"
             className="input"
+            value={landingTime}
             step="2"
-            className="input"
             onChange={handleLandingTime}
           />
           <label htmlFor="price">Price:</label>
@@ -151,14 +156,21 @@ const AddFlight = () => {
             id="price"
             className="input"
             name="price"
-            className="input"
+            value={price}
             style={{ marginLeft: "10px" }}
             onChange={handlePrice}
           />
-
-          <button style={{ margin: "10px", width: "20%" }} onClick={handleAdd}>
-            Add a Flight
-          </button>
+          <div className="buttonContainer">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/flights");
+              }}
+            >
+              Back
+            </button>
+            <button onClick={handleAdd}>Add a Flight</button>
+          </div>
         </form>
       </div>
     </>
