@@ -22,7 +22,6 @@ export const login = async (dispatch, userInfo) => {
       "http://localhost:8000/api/v1/users/login",
       userInfo
     );
-    console.log("response: ", res.data);
     localStorage.setItem("role", res.data.user.role);
     localStorage.setItem("token", res.data.token);
     dispatch(loginSuccess(res.data.user));
@@ -113,7 +112,11 @@ export const addFlight = async (flightInfo, dispatch) => {
     const res = await axios.post(
       "http://localhost:8000/api/v1/flights/new",
       newFlightInfo,
-      token
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
     );
     if (res.data) {
       dispatch(addFlightSuccess(res.data.flight));

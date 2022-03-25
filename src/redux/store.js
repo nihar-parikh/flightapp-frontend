@@ -13,7 +13,6 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-//in browser -> application -> localstorage -> key: persist:root -> user .....check it
 const persistConfig = {
   key: "root",
   version: 1,
@@ -24,13 +23,6 @@ const rootReducer = combineReducers({
   user: userReducer,
   flight: flightReducer,
 });
-
-// const store = configureStore({
-//   reducer: {
-//     flight: flightReducer,
-//     user: userReducer,
-//   },
-// });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -45,5 +37,3 @@ export const store = configureStore({
 });
 
 export let persistor = persistStore(store);
-
-// export { store };

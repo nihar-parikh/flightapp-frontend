@@ -52,15 +52,10 @@ const FlightList = () => {
 
   return (
     <>
-      <div>
+      <div className="flightListContainer">
         <h1>FlightList</h1>
 
-        <form
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
+        <form className="searchFlightContainer">
           <label htmlFor="flights">Search a Flight:</label>
           <select
             id="flights"
@@ -113,6 +108,7 @@ const FlightList = () => {
             </button>
           )}
         </form>
+
         <Table />
       </div>
     </>

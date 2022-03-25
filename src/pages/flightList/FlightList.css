@@ -13,3 +13,12 @@ td {
 th {
   text-align: center;
 }
+
+.flightListContainer {
+  background-color: #1ea1a1;
+}
+
+.searchFlightContainer {
+  display: flex;
+  align-items: center;
+}

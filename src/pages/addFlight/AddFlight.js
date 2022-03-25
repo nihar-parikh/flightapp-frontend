@@ -65,8 +65,53 @@ const AddFlight = () => {
     setPrice("");
     setTimeout(() => {
       setNewFlight(false);
-    }, 2000);
+    }, 3000);
   };
+
+  const places = [
+    "vadodara",
+    "ahmedabad",
+    "banglore",
+    "mumbai",
+    "goa",
+    "hyderabad",
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chhattisgarh",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jammu and Kashmir",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttarakhand",
+    "Uttar Pradesh",
+    "West Bengal",
+    "Andaman and Nicobar Islands",
+    "Chandigarh",
+    "Dadra and Nagar Haveli",
+    "Daman and Diu",
+    "Delhi",
+    "Lakshadweep",
+    "Puducherry",
+  ];
 
   return (
     <>
@@ -83,13 +128,9 @@ const AddFlight = () => {
             onChange={handleFrom}
           >
             <option defaultValue>from</option>
-
-            <option value="vadodara">vadodara</option>
-            <option value="ahmedabad">ahmedabad</option>
-            <option value="banglore">banglore</option>
-            <option value="mumbai">mumbai</option>
-            <option value="goa">goa</option>
-            <option value="hyderabad">hyderabad</option>
+            {places.map((place) => (
+              <option value={place}>{place}</option>
+            ))}
           </select>
           <select
             id="flights"
@@ -99,12 +140,9 @@ const AddFlight = () => {
             onChange={handleTo}
           >
             <option defaultValue>to</option>
-            <option value="vadodara">vadodara</option>
-            <option value="ahmedabad">ahmedabad</option>
-            <option value="banglore">banglore</option>
-            <option value="mumbai">mumbai</option>
-            <option value="goa">goa</option>
-            <option value="hyderabad">hyderabad</option>
+            {places.map((place) => (
+              <option value={place}>{place}</option>
+            ))}
           </select>
           <label htmlFor="departureDate" style={{ marginLeft: "10px" }}>
             Departure Date:
